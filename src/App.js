@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import Layout from "./components/Layout/Layout";
+import Auth from "./components/Auth/Auth";
+import Nav from "./components/Nav/Nav";
+
+import Account from "./components/Account/Account";
+import * as actions from "./store/actions/index";
+
+import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => dispatch(actions.authCheckState()), []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Nav />
+      <Switch>
+        <Route path="/acc" component={Account} />
+        <Route path="/auth" component={Auth} />
+        <Route path="/" component={Layout} />
+      </Switch>
     </div>
   );
 }

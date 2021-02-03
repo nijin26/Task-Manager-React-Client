@@ -1,0 +1,35 @@
+.container{
+    height: 50vh;
+    width:50%;
+    margin: 20px auto;
+    padding: 10px;
+    box-shadow: 0 3px 10px rgba(#0000,80%);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: in 1s ;
+
+    &__heading{
+        font-size: 32px;
+        font-weight: 900;
+        text-shadow: 0 2px 2px #00000093;
+        transition: all .2s;
+
+
+        &:hover{
+            transform: translateY(-2px);
+        }
+    }
+}
+
+@keyframes in{
+    0%{
+        transform: translateY(100px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
